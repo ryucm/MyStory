@@ -9,9 +9,11 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Post extends TimeStamped{
 
-    public Post(PostRequestDto postRequestDto) {
+    public Post(PostRequestDto postRequestDto, User user) {
+        this.user = user;
         this.title = postRequestDto.getTitle();
         this.contents = postRequestDto.getContents();
     }
@@ -28,9 +30,9 @@ public class Post extends TimeStamped{
     @Column(nullable = false)
     private String title;
 
-    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Member user;
+    @ManyToOne()
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user;
 
     @Column(nullable = true)
     private String contents;

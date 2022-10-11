@@ -22,8 +22,8 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="/">Main</a></li>
-							<li class="active"><a href="/write">Write</a></li>
-							<li><a href="/sign-up">Sign Up</a></li>
+							<li class="active"><a href="/post/write">Write</a></li>
+							<li><a href="/user/sign-up">Sign Up</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -43,10 +43,10 @@
 									<h1 th:text="${post.getTitle()}"></h1>
 								</header>
 								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p th:text="${post.getUserId()}"></p>
+								<p th:text="${post.getUser().getUsername()}"></p>
 								<p th:text="${post.getContents()}"></p>
 								<ul class="actions">
-									<li><a th:href="@{/view/modify/{id}(id=${post.getPostId()})}" class="button">Modify</a></li>
+									<li><a th:href="@{/post/modify/{id}(id=${post.getPostId()})}" class="button">Modify</a></li>
 								</ul>
 							</section>
 

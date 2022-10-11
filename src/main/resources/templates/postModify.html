@@ -22,8 +22,8 @@
 	<nav id="nav">
 		<ul class="links">
 			<li><a href="/">Main</a></li>
-			<li class="active"><a href="/write">Write</a></li>
-			<li><a href="/sign-up">Sign Up</a></li>
+			<li class="active"><a href="/post/write">Write</a></li>
+			<li><a href="/user/sign-up">Sign Up</a></li>
 		</ul>
 		<ul class="icons">
 			<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -39,21 +39,17 @@
 		<!-- Post -->
 		<h2>Form</h2>
 
-		<form method="post" th:action="@{/view/update/{id}(id=${id})}">
+		<form method="post" th:action="@{/post/update/{id}(id=${id})}">
 			<div class="row gtr-uniform">
 				<div class="col-6 col-12-xsmall">
 					<input type="text" name="title" id="title" th:value="${post.getTitle()}" />
 				</div>
 				<div class="col-6 col-12-xsmall">
-					<input type="text" name="userName" id="userName" th:value="${post.getUserName()}" />
+					<input type="text" name="userName" id="userName" th:value="${post.getUser().getUsername()}" />
 				</div>
-				<div class="col-6 col-12-xsmall">
-					<input type="text" name="userId" id="userId" th:value="${post.getUserId()}" />
+				<div class="col-12-xsmall">
+					<input type="text" name="email" id="userId" th:value="${post.getUser().getEmail()}" />
 				</div>
-				<div class="col-6 col-12-xsmall">
-					<input type="text" name="password" id="password" th:value="${post.getTitle()}" />
-				</div>
-
 				<!-- Break -->
 				<div class="col-12">
 					<textarea name="contents" id="contents" th:value="${post.getContents()}" rows="6"></textarea>
@@ -62,7 +58,7 @@
 				<div class="col-12">
 					<ul class="actions">
 						<li><input type="submit" value="Send Message" class="primary" /></li>
-						<li><a th:href="@{/delete/{id}(id=${id})}" class="button">Delete</a></li>
+						<li><a th:href="@{/post/delete/{id}(id=${id})}" class="button">Delete</a></li>
 					</ul>
 				</div>
 			</div>

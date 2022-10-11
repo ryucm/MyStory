@@ -6,6 +6,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -22,8 +23,8 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="/">Main</a></li>
-							<li><a href="/write">Write</a></li>
-							<li class="active"><a href="/sign-up">Sign Up</a></li>
+							<li><a href="/post/write">Write</a></li>
+							<li class="active"><a href="/user/sign-up">Sign Up</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -39,21 +40,21 @@
 						<!-- Post -->
 						<h2>Form</h2>
 
-						<form method="post" action="/sign-up">
+						<form method="post" action="/user/sign-up">
 							<div class="row gtr-uniform">
 								<div class="col-10 col-10-xsmall">
-									<input type="text" name="userId"  placeholder="userId" />
-								</div>
-								<div class="col-10 col-10-xsmall">
-									<input type="text" name="userName" placeholder="User Name" />
-								</div>
-								<div class="col-10 col-10-xsmall">
-									<input type="text" name="userEmail"  placeholder="User Email" />
+									<input type="text" name="username" placeholder="User Name" />
 								</div>
 								<div class="col-10 col-10-xsmall">
 									<input type="text" name="password"  placeholder="Password" />
 								</div>
-
+								<div class="col-10 col-10-xsmall">
+									<input type="text" name="email"  placeholder="User Email" />
+								</div>
+								<div class="col-12">
+									<input type="checkbox" name="admin" onclick="onclickAdmin()">관리자
+									<input type="password" name="adminToken" placeholder="관리자 암호" class="login-input-box">
+								</div>
 								<!-- Break -->
 								<div class="col-12">
 									<ul class="actions">
@@ -132,6 +133,21 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function onclickAdmin() {
+					// Get the checkbox
+					var checkBox = document.getElementById("admin-check");
+					// Get the output text
+					var box = document.getElementById("admin-token");
+
+					// If the checkbox is checked, display the output text
+					if (checkBox.checked == true){
+						box.style.display = "block";
+					} else {
+						box.style.display = "none";
+					}
+				}
+			</script>
 
 	</body>
 </html>

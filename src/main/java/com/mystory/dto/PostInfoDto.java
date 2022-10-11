@@ -1,7 +1,7 @@
 package com.mystory.dto;
 
 import com.mystory.domain.Post;
-import com.mystory.domain.Member;
+import com.mystory.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PostInfoDto {
     private Long postId;
-    private Member userId;
+    private User user;
     private String title;
     private String contents;
 
@@ -24,7 +24,7 @@ public class PostInfoDto {
 
     public PostInfoDto(Post post) {
         this.postId = post.getPostId();
-//        this.userId = post.getUser();
+        this.user = post.getUser();
         this.title = post.getTitle();
         this.contents = post.getContents();
         this.createdAt = post.getCreatedAt();

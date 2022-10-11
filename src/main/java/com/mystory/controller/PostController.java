@@ -2,20 +2,22 @@ package com.mystory.controller;
 
 
 import com.mystory.domain.Post;
+import com.mystory.domain.User;
 import com.mystory.dto.PostInfoDto;
 import com.mystory.dto.PostRequestDto;
+import com.mystory.security.UserDetailslmpl;
 import com.mystory.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,42 +40,43 @@ public class PostController {
         return "index";
     }
 
-    @GetMapping("/view")
+    @GetMapping("/post")
     public String view(Long id, Model model) {
         PostInfoDto postInfoDto = postService.postView(id);
         model.addAttribute("post", postInfoDto);
-        return "view";
+        return "post";
     }
 
-    @GetMapping("/view/modify/{id}")
+    @GetMapping("/post/modify/{id}")
     public String modify(@PathVariable("id") Long id, Model model) {
         model.addAttribute("post", postService.postView(id));
         model.addAttribute("id", id);
-        return "modify";
+        return "postModify";
     }
 
-    @PostMapping("/view/update/{id}")
-    public String update(@PathVariable("id") Long id, PostRequestDto postRequestDto) {
-        postService.update(id, postRequestDto);
+    @PostMapping("/post/update/{id}")
+    public String update(@PathVariable("id") Long id, PostRequestDto postRequestDto, @AuthenticationPrincipal UserDetailslmpl userDetails) {
+        postService.update(id, postRequestDto, userDetails);
         return "redirect:/";
     }
 
-    @GetMapping("/write")
+    @GetMapping("/post/write")
     public String write() {
-
-        return "write";
+        return "postWrite";
     }
-    @PostMapping("/create")
-    public String create(PostRequestDto postRequestDto, Model model) {
-        postService.create(postRequestDto);
+
+    @PostMapping("/post/create")
+    public String create(PostRequestDto postRequestDto, Model model, @AuthenticationPrincipal UserDetailslmpl userDetailslmpl) {
+        User user = userDetailslmpl.getUser();
+        postService.create(postRequestDto, user);
         model.addAttribute("message", "글 작성이 완료되었습니다.");
         model.addAttribute("searchUrl", "/");
         return "message";
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
-        postService.delete(id);
+    @GetMapping("/post/delete/{id}")
+    public String delete(@PathVariable("id") Long id, @AuthenticationPrincipal UserDetailslmpl userDetailslmpl) {
+        postService.delete(id,userDetailslmpl);
         return "redirect:/";
     }
 }

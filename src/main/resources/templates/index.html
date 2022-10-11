@@ -32,8 +32,8 @@
 					<nav id="nav">
 						<ul class="links">
 							<li class="active"><a href="/">Main</a></li>
-							<li><a href="/write">Write</a></li>
-							<li><a href="/sign-up">Sign Up</a></li>
+							<li><a href="/post/write">Write</a></li>
+							<li><a href="/user/sign-up">Sign Up</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -64,22 +64,21 @@
 								<article th:each="list : ${list}">
 									<header>
 										<span class="date" th:text="${list.getCreatedAt()}">April 24, 2017</span>
-										<h2><a th:href="@{/view(id=${list.getPostId()})}" th:text="${list.getTitle()}">Sed magna<br />
+										<h2><a th:href="@{/post(id=${list.getPostId()})}" th:text="${list.getTitle()}">Sed magna<br />
 										ipsum faucibus</a></h2>
 									</header>
-									<a th:href="@{/view(id=${list.getPostId()})}" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+									<a th:href="@{/post(id=${list.getPostId()})}" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul class="actions special">
-										<li><a th:href="@{/view(id=${list.getPostId()})}" class="button">Full Story</a></li>
+										<li><a th:href="@{/post(id=${list.getPostId()})}" class="button">Full Story</a></li>
 									</ul>
 								</article>
 							</section>
 
-						 Footer
 							<footer>
 								<div class="pagination">
 									<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-										<a th:if="${page != nowPage}" th:href="@{/blog/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
+										<a th:if="${page != nowPage}" th:href="@{/post/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
 										<strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
 									</th:block>
 								</div>

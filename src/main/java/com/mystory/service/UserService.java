@@ -1,13 +1,9 @@
 package com.mystory.service;
 
 
-import com.mystory.domain.Member;
 import com.mystory.domain.User;
 import com.mystory.domain.UserRoleEnum;
-import com.mystory.dto.MemberCreateDto;
-import com.mystory.dto.MemberLoginDto;
 import com.mystory.dto.SignupRequestDto;
-import com.mystory.repository.MemberRepository;
 import com.mystory.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,25 +17,14 @@ import java.util.Optional;
 public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-    private final MemberRepository memberRepository;
     private static final String ADMIN_TOKEN = "AAABnv/xRVklrnYxKZ0aHgTBcXukeZygoC";
 
 
     @Transactional
-    public Member findUser(Long id) {
-        return memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Post ID does not exist"));
+    public User findUser(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Post ID does not exist"));
     }
 
-    @Transactional
-    public void signUp(MemberCreateDto userCreateDto) {
-        Member user = new Member(userCreateDto);
-        memberRepository.save(user);
-    }
-
-    @Transactional
-    public void signIn(MemberLoginDto userLoginDto) {
-        Member user = memberRepository.findByUserId(userLoginDto.getUserId());
-    }
 
     public void registerUser(SignupRequestDto requestDto) {
         String username = requestDto.getUsername();
