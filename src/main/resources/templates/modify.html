@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>글쓰기</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/css/main.css" />
+	<noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="/" class="logo">Ryu Chang Min</a>
+	</header>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li><a href="/">Main</a></li>
+			<li class="active"><a href="/write">Write</a></li>
+			<li><a href="/sign-up">Sign Up</a></li>
+		</ul>
+		<ul class="icons">
+			<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- Post -->
+		<h2>Form</h2>
+
+		<form method="post" th:action="@{/view/update/{id}(id=${id})}">
+			<div class="row gtr-uniform">
+				<div class="col-6 col-12-xsmall">
+					<input type="text" name="title" id="title" th:value="${post.getTitle()}" />
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<input type="text" name="userName" id="userName" th:value="${post.getUserName()}" />
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<input type="text" name="userId" id="userId" th:value="${post.getUserId()}" />
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<input type="text" name="password" id="password" th:value="${post.getTitle()}" />
+				</div>
+
+				<!-- Break -->
+				<div class="col-12">
+					<textarea name="contents" id="contents" th:value="${post.getContents()}" rows="6"></textarea>
+				</div>
+				<!-- Break -->
+				<div class="col-12">
+					<ul class="actions">
+						<li><input type="submit" value="Send Message" class="primary" /></li>
+						<li><a th:href="@{/delete/{id}(id=${id})}" class="button">Delete</a></li>
+					</ul>
+				</div>
+			</div>
+		</form>
+
+		<hr />
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<section>
+			<form method="post" action="#">
+				<div class="fields">
+					<div class="field">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" />
+					</div>
+					<div class="field">
+						<label for="email">Email</label>
+						<input type="text" name="email" id="email" />
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="3"></textarea>
+					</div>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" /></li>
+				</ul>
+			</form>
+		</section>
+		<section class="split contact">
+			<section class="alt">
+				<h3>Address</h3>
+				<p>1234 Somewhere Road #87257<br />
+					Nashville, TN 00000-0000</p>
+			</section>
+			<section>
+				<h3>Phone</h3>
+				<p><a href="#">(000) 000-0000</a></p>
+			</section>
+			<section>
+				<h3>Email</h3>
+				<p><a href="#">info@untitled.tld</a></p>
+			</section>
+			<section>
+				<h3>Social</h3>
+				<ul class="icons alt">
+					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+		</section>
+	</footer>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+	</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
