@@ -16,6 +16,7 @@
 ## API명세서
 
 |기능|Method|URI|
+|---|---|---|
 |Home|GET|/|
 |게시글조회|GET|/post{id}|
 |게시글작성|GET|/post/write|
