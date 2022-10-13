@@ -1,4 +1,4 @@
-package com.mystory.dto;
+package com.mystory.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

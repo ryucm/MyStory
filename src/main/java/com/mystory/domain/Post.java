@@ -1,7 +1,7 @@
 package com.mystory.domain;
 
 
-import com.mystory.dto.PostRequestDto;
+import com.mystory.dto.post.PostRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,7 +24,7 @@ public class Post extends TimeStamped{
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
     @Column(nullable = false)

@@ -3,7 +3,6 @@ package com.mystory.security;
 import com.mystory.domain.User;
 import com.mystory.domain.UserRoleEnum;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,11 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-@Getter
+
 @RequiredArgsConstructor
-public class UserDetailslmpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
     private final User user;
+
+    public User getUser() {
+        return user;
+    }
 
     @Override
     public String getPassword() {

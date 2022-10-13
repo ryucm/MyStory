@@ -1,4 +1,4 @@
-package com.mystory.dto;
+package com.mystory.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,5 +11,4 @@ public class SignupRequestDto {
     private String password;
     private String email;
     private boolean admin = false;
-    private String adminToken = "";
 }
